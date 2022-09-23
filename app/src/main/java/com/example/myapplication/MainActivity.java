@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
             bancoDados.execSQL("INSERT INTO pessoas(nome,idade) VALUES('Luisa', 21)");
 
             //recuperar os dados
-            Cursor cursor = bancoDados.rawQuery("SELECT nome, idade FROM pessoas", null);
+            String ler = "SELECT nome, idade FROM pessoas " +
+                         "WHERE nome = 'Joao'";
+            Cursor cursor = bancoDados.rawQuery(ler, null);
 
             int indiceNome = cursor.getColumnIndex("nome");
             int indiceIdade = cursor.getColumnIndex("idade");
