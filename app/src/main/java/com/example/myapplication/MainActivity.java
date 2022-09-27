@@ -22,13 +22,19 @@ public class MainActivity extends AppCompatActivity {
             bancoDados.execSQL("CREATE TABLE IF NOT EXISTS pessoas ( nome VARCHAR, idade INT(3))");
 
             //inserir dados
-            bancoDados.execSQL("INSERT INTO pessoas(nome,idade) VALUES('Joao', 24)");
-            bancoDados.execSQL("INSERT INTO pessoas(nome,idade) VALUES('Luisa', 21)");
+            //bancoDados.execSQL("INSERT INTO pessoas(nome,idade) VALUES('Joao', 24)");
+            //bancoDados.execSQL("INSERT INTO pessoas(nome,idade) VALUES('Luisa', 21)");
 
             //recuperar os dados
+            /*String ler = "SELECT nome, idade FROM pessoas " +
+                         "WHERE nome LIKE 'Joao'";*/
+            bancoDados.execSQL("UPDATE pessoas SET idade = 19 WHERE nome = 'Luisa'");
+
             String ler = "SELECT nome, idade FROM pessoas " +
-                         "WHERE nome = 'Joao'";
+                    "ORDER BY idade ASC";
             Cursor cursor = bancoDados.rawQuery(ler, null);
+
+
 
             int indiceNome = cursor.getColumnIndex("nome");
             int indiceIdade = cursor.getColumnIndex("idade");
